@@ -28,13 +28,14 @@ const BookList = () => {
   };
 
   const filteredBooks = books.filter((book) => {
-    const matchesBook =
-      book.title.toLowerCase().includes(titleFilter.toLowerCase()) &&
-      book.author.toLowerCase().includes(authorFilter.toLowerCase()) &&
-      onlyFavoriteFilter
-        ? book.isFavorite
-        : true;
-    return matchesBook;
+    const matchesTitle = book.title
+      .toLowerCase()
+      .includes(titleFilter.toLowerCase());
+    const matchesAuthor = book.author
+      .toLowerCase()
+      .includes(authorFilter.toLowerCase());
+    const matchesFavorite = onlyFavoriteFilter ? book.isFavorite : true;
+    return matchesTitle && matchesAuthor && matchesFavorite;
   });
 
   const highlightMatch = (text, filter) => {
@@ -64,7 +65,7 @@ const BookList = () => {
           {filteredBooks.map((book, i) => (
             <li key={book.id}>
               <div className="book-info">
-                {++i}. {highlightMatch(book.title, titleFilter)} by{" "}
+                {++i}. {highlightMatch(book.title, titleFilter)} by
                 <strong>{highlightMatch(book.author, authorFilter)}</strong>
               </div>
               <div className="book-actions">
