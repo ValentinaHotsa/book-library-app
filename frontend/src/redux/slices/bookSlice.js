@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, isFulfilled } from "@reduxjs/toolkit";
 import axios from "axios";
 import createBookWithId from "../../utils/createBookWithId";
 import { setError } from "./errorSlice";
@@ -41,13 +41,20 @@ const bookSlice = createSlice({
       //   );
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(fetchBook.fulfilled, (state, action) => {
+  extraReducers: {
+    [fetchBook.fulfilled]: (state, action) => {
       if (action.payload.title && action.payload.author) {
         state.push(createBookWithId(action.payload, "API"));
       }
-    });
+    },
   },
+  // extraReducers: (builder) => {
+  //   builder.addCase(fetchBook.fulfilled, (state, action) => {
+  //     if (action.payload.title && action.payload.author) {
+  //       state.push(createBookWithId(action.payload, "API"));
+  //     }
+  //   });
+  // },
 });
 
 export const { setAddBook, setDeleteBook, setToggleFavorite } =
