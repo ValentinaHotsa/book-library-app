@@ -20,9 +20,9 @@ You can see the live demo of the application [here](https://valentinahotsa.githu
 ## Project Structure
 
 - frontend/ — client-side of the application (React).
-- server/ — server-side of the application (Node.js, Express).
+- api/ — server-side of the application (Node.js, Express).
 - frontend/src/books.json — local JSON file with books.
-- server/books.json — local JSON file on the server.
+- api/books.json — local JSON file on the server.
 
 ## Technologies
 
@@ -39,13 +39,13 @@ You can see the live demo of the application [here](https://valentinahotsa.githu
 1.  Clone the repository to your local machine:
 
 ```
-git clone https://github.com/username/repository.git
+git clone https://github.com/ValentinaHotsa/book-library-app
 ```
 
 2. Navigate to the frontend directory:
 
 ```
-cd repository/frontend
+cd frontend
 ```
 
 3. Install dependencies:
@@ -65,7 +65,7 @@ npm start
 1.  Navigate to the server directory:
 
 ```
-cd ../server
+cd api
 ```
 
 2. Install dependencies:
